@@ -45,6 +45,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WriteFileWebpackPlugin = require('write-file-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // provide these in every JS file without having to import
 const providePluginList = {
@@ -59,7 +60,6 @@ module.exports = (env, argv) => ({
 
         // Use path.join (vs path.resolve) to normalize paths
         // bc diff OS's use diff dir name formats
-        // bundle: path.join(__dirname, 'Web', 'src', 'js', 'app', 'index.js'),
         bundle: path.join(__dirname, 'src', 'main.js'),
     },
 
@@ -240,6 +240,21 @@ module.exports = (env, argv) => ({
                         // 'eslint-loader'
                       ]
             }
+            ,
+
+            {
+              // HTML
+              test: /\.html$/,
+              use: [
+                  {
+                    loader: "html-loader",
+                    // loader: 'raw-loader'
+                    options: { minimize: false }
+                  }
+                ]
+
+            }
+
 
             /*
                 @todo: enable once webpack-dev-server is wired to IIS
@@ -273,7 +288,7 @@ module.exports = (env, argv) => ({
     devServer: {
 
         // where the index.html file is, for the dev server to load
-        contentBase: path.join(__dirname, 'src'),
+        contentBase: path.join(__dirname, 'src', 'public'),
         hot: true,
         overlay: {
           warnings: true,
@@ -317,11 +332,23 @@ module.exports = (env, argv) => ({
                         parallel: true,
                         safari10: true
                     }
-                })  ,
+                }),
 
                 new webpack.ProgressPlugin({ profile: false }),
 
+                new HtmlWebpackPlugin({
+                        template: './src/public/index.html',
+                        filename: 'index.html',
+                        inject: 'body'
+                })
 
+                // ,
+
+                // new CopyWebpackPlugin([
+                //     { 
+                //         from: path.join(__dirname, 'src', 'public')
+                //     } 
+                // ])
             ] 
 
             : 
@@ -330,16 +357,21 @@ module.exports = (env, argv) => ({
             [
                 // Leave commented so .NET backend server has files to reference
                 // while using webpack-dev-server.
-                // new CleanWebpackPlugin(path.join(__dirname, 'Web', 'dist')),
+                // new CleanWebpackPlugin(path.join(__dirname, 'dist')),
                 new webpack.ProvidePlugin(providePluginList),
                 new webpack.HotModuleReplacementPlugin(),
                 new webpack.NamedModulesPlugin(),
                 new webpack.ProgressPlugin({ profile: false }),
 
-
+                new HtmlWebpackPlugin({
+                        template: './src/public/index.html',
+                        filename: 'index.html',
+                        inject: 'body'
+                }),
 
                 // @todo: remove when webpack-dev-server is wired to IIS
                 // 
                 new WriteFileWebpackPlugin()
+
             ]
 });
