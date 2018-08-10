@@ -60,7 +60,7 @@ module.exports = (env, argv) => ({
         // Use path.join (vs path.resolve) to normalize paths
         // bc diff OS's use diff dir name formats
         // bundle: path.join(__dirname, 'Web', 'src', 'js', 'app', 'index.js'),
-        bundle: path.join(__dirname, 'main.js'),
+        bundle: path.join(__dirname, 'src', 'main.js'),
     },
 
     output: {
@@ -273,7 +273,7 @@ module.exports = (env, argv) => ({
     devServer: {
 
         // where the index.html file is, for the dev server to load
-        contentBase: __dirname,
+        contentBase: path.join(__dirname, 'src'),
         hot: true,
         overlay: {
           warnings: true,
@@ -298,7 +298,7 @@ module.exports = (env, argv) => ({
     plugins: 
         argv.mode === 'production' ? 
             [
-                new CleanWebpackPlugin(path.join(__dirname, 'Web', 'dist')),
+                new CleanWebpackPlugin(path.join(__dirname, 'dist')),
                 
                 new webpack.ProvidePlugin(providePluginList),
 
