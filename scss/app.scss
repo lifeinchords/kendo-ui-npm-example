@@ -1,0 +1,77 @@
+/* 
+    Declare our application's variables. Do this first, because its
+    used later in other partials.
+*/
+@import 'partials/variables--app';
+@import 'partials/breakpoints';
+
+@import 'partials/variables--bootstrap';
+
+/*
+    Customize the Kendo UI theme with the SCSS variables they make available.
+    Affects all instances of Kendo components across our app.
+    https://docs.telerik.com/kendo-ui/styles-and-layout/sass-themes#customizing-the-themes
+
+    Import this before any of Kendo UI's default component styles
+*/
+@import 'partials/variables--kendo';
+
+
+@import 'partials/utils';
+
+/* 
+    Imports Kendo UI's default component styles. Each component has their own partials.
+    We're only importing the styles for the components we use in our app
+*/
+
+@import "node_modules/@progress/kendo-theme-default/scss/popup";
+@import 'node_modules/@progress/kendo-theme-default/scss/multiselect';
+
+/*
+    Kendo UI overrides.
+    Import these last, after Kendo UI variables, and Kendo default component styles.
+
+    Kendo UI only surfaces some variables for globally customizing 
+    their components. We'll need to use overrides 
+    to style the parts that aren't available through their variables.
+    This affects all component instances across the app.
+*/
+@import 'partials/kendo-overrides--popup';
+@import 'partials/kendo-overrides--tag';
+@import 'partials/kendo-overrides--multiselect';
+
+
+// Vendor (3rd party) library styles 
+/* @import 'node_modules/noty/src/noty'; */
+/* @import 'node_modules/noty/src/themes/light'; */
+/* @import 'node_modules/angular-loading-bar/src/loading-bar'; */
+
+
+/*
+    There should be a minimal set of styles
+    after this point which don't fit in other partials
+*/
+
+html {
+    /*
+        Fixes page jumping when scroll bar shows/hides
+        https://aykevl.nl/2014/09/fix-jumping-scrollbar
+    */  
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+body {
+    // for loading overlay absolute positioning
+    position: relative;
+
+    // so mq debugger moves to bottom of the page
+    min-height: 100vh;
+
+    margin: 0;
+    padding: 0;
+    font-family: $font-family;
+    color: $gray-800;
+}
+
+

@@ -1,8 +1,29 @@
-angular = require("angular");
+import angular from "angular";
 
-require("@progress/kendo-ui/js/kendo.multiselect.js");
-require("@progress/kendo-ui/js/kendo.angular.js");
-require("@progress/kendo-ui/css/web/kendo.bootstrap-v4.min.css");
+import "@progress/kendo-ui/js/kendo.multiselect.js";
+import "@progress/kendo-ui/js/kendo.angular.js";
+
+import './scss/app.scss';
+/*
+angular.module("KendoDemos", ["kendo.directives"])
+    .controller("MyCtrl", function ($scope) {
+        $scope.selectOptions = {
+            placeholder: "select",
+            dataTextField: "name",
+            dataValueField: "id",
+            dataSource: {
+                transport: {
+                    read: {
+                        url: "https://population.un.org/workprogramme/api/sections",
+                        dataType: "json"
+                    }
+                }
+            }
+        };
+        $scope.selectedItems = [{ name: "Office of the Directdor", id: 1 }];
+    });
+
+*/
 
 angular.module("KendoDemos", ["kendo.directives"])
     .controller("MyCtrl", function ($scope) {
@@ -21,3 +42,4 @@ angular.module("KendoDemos", ["kendo.directives"])
         };
         $scope.selectedItems = [{ ProductName: "Chai", ProductID: 1 }];
     });
+

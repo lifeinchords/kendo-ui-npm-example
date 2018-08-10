@@ -1,0 +1,31 @@
+@import '/variables--app';
+@import '/variables--kendo';
+@import '/utils';
+
+.k-multiselect-wrap {
+    display: flex;
+    position: relative; // for abs positioning of arrow
+    align-items: center;
+
+    min-height: 0 !important;
+    height: $height--multiselect !important;
+}
+
+//  focused
+.k-multiselect.k-state-focused .k-multiselect-wrap {
+    border-top-right-radius: $border-radius !important;
+    border-top-left-radius: $border-radius !important;
+    border-bottom-right-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}
+
+// multiselect text field
+.k-multiselect-wrap .k-input {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 1;
+
+    height: auto !important;
+    margin: 0 !important;
+    float: none !important;
+}

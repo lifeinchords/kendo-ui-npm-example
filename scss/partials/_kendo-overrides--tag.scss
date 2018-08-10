@@ -1,0 +1,79 @@
+@import '/variables--app';
+@import '/variables--kendo';
+@import '/utils';
+
+// tags container 
+.k-multiselect-wrap ul {
+    display: flex  !important;
+    align-items: center  !important;
+    justify-content: flex-start  !important;
+    flex-wrap: nowrap  !important;
+    padding: 0.5rem !important;
+}
+
+// tag container
+.k-multiselect-wrap li {
+    float: none !important;
+    height: 25px !important;
+    min-height: auto !important;
+
+    margin: 0 4px 0 0 !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.25rem !important;
+
+    font-size: px-to-rem(13px);
+    white-space: nowrap !important;
+
+    color: white  !important;
+    background: $blue !important;
+
+    /*
+        We want to remove the default input border,
+        but still have rounded edges. Override Kendo
+    */
+    border-width: 0 !important;  
+
+    /* 
+        We set this ourselves because Kendo doesn't 
+        surface this variable for buttons
+    */
+    border-radius: $border-radius !important;
+
+    cursor: pointer !important;
+    outline: initial !important;
+}
+
+.k-multiselect-wrap li:first-child { margin-left: 0 !important; }
+.k-multiselect-wrap li:last-child { margin-right: 0 !important; }
+
+// tag text
+.k-multiselect-wrap li span {
+    @include truncate(40px);
+    @include media-breakpoint-up(sm) { max-width: 120px; }
+    @include media-breakpoint-up(lg) { max-width: 55px; }
+    @include media-breakpoint-up(xl) { max-width: 80px; }
+    @include media-breakpoint-up(xxl) { max-width: 120px; }
+}
+
+// tag x button 
+.k-multiselect-wrap .k-button .k-select {
+    position: relative !important;
+    top: 1px !important;
+    margin: 0 0.1rem 0 0.2rem !important;
+    color: $blue--dark !important;
+}
+
+// tag x button hover
+.k-multiselect-wrap .k-button.k-state-hover {
+    opacity: 0.9;
+}
+
+// tag x button hover
+.k-multiselect-wrap .k-button.k-state-hover .k-select {
+    color: white;
+}
+
+.k-multiselect li .k-icon {
+    opacity: 1 !important;
+    font-size: 1rem;
+}

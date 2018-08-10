@@ -1,0 +1,68 @@
+@import '/variables--app';
+@import '/variables--kendo';
+@import '/utils';
+
+/* 
+    Popup lists shared for combobox, multiselect, dropdowntree.
+    By default, we can't scope these to Kendo element 
+    itself because the lists are created outside the component
+    DOM, at the bottom of the page DOM. 
+
+    Kendo offers a way to attach to another DOM tho:
+    @todo: https://docs.telerik.com/kendo-ui/api/javascript/ui/multiselect/configuration/popup#popup.appendTo
+    
+    @todo: verify there isn't another way
+    to add classes, so we can create groups 
+    with different styling, instead of relying
+    on ID's
+ */
+
+//  panel that slides down, Kendo calls it Popup
+.k-popup {
+    z-index: 5;
+    max-height: 400px;
+    top: -1px;
+
+    border-left: 1px solid $gray-600;
+    border-right: 1px solid $gray-600;
+    border-bottom: 1px solid $gray-600;
+}
+
+// the list group header
+// @todo: should header be supressed via init JS param?
+.k-popup .k-group-header {
+    display: none !important;
+    box-shadow: none;
+}
+
+// list items container
+.k-popup .k-list-scroller {
+    // cover the bottom background of the input form border 
+    position: relative;
+    top: -1px; 
+
+    border-left: 1px solid $gray-200;
+    border-right: 1px solid $gray-200;
+    border-bottom: 1px solid $gray-200;
+}
+
+.k-popup .k-list-scroller li.k-state-selected {
+    background: $gray-300 !important;
+}
+
+// the list item
+.k-popup .k-list li.k-item {
+    font-weight: 400 !important;
+    height: $height--multiselect !important;
+    padding: 0 0 0 1.5rem !important;
+}
+
+// hide list item header text and the line separator
+.k-popup .k-list .k-item.k-first .k-group,
+.k-popup .k-list>.k-item.k-first::before {
+    visibility: hidden !important;
+}
+
+.k-popup .k-list li.k-item.k-state-hover {
+    background: $gray-200 !important;
+}

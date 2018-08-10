@@ -1,0 +1,105 @@
+/*
+       Bootstrap variables customized for our app.
+       Only the vars we customize were copied from Bootstrap's
+       variable file, here.
+       \node_module\bootstrap\scss\_variables.scss
+
+        When Bootstrap loads, it'll use these values
+        instaed of its default values.
+
+       https://getbootstrap.com/docs/4.1/getting-started/theming/
+*/
+$label-margin-bottom: 0;
+
+$enable-shadows: false;
+
+$enable-rounded: true;
+$border-radius: 2px;
+$border-radius-lg: 2px;
+$border-radius-sm: 2px;
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1600px 
+) !default;
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .text#{$infix}-left   { text-align: left !important; }
+    .text#{$infix}-right  { text-align: right !important; }
+    .text#{$infix}-center { text-align: center !important; }
+  }
+}
+
+
+$container-max-widths: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px,
+    xxl: 1540px 
+);
+
+$grid-columns: 12;
+$grid-gutter-width: 30px;
+
+$blue: #008FD5;
+
+// anything without default is our custom colors
+$gray-100: #F8F9FA;
+$gray-200: #F2F2F2;
+$gray-300: #E5E5E5;
+$gray-400: #CED4DA;
+$gray-500: #999999; 
+$gray-600: #B2B2B2;
+$gray-700: #333333;
+$gray-800: #4D4D4D;
+$gray-900: #323232;
+$black: #191919;
+
+$box-shadow: 0 0.5rem 0.625rem rgba(0, 0, 0, 0.3);
+
+/* 
+    Roboto is our app style
+    If that's not available...
+
+    -apple-system targets San Francisco in Safari (on Mac OS X and iOS), 
+    and it targets Neue Helvetica and Lucida Grande on older versions of Mac OS X. 
+    It properly selects between San Francisco Text and San Francisco Display
+    depending on the text’s size.
+
+    system-ui represents the default UI font on a given platform.
+
+    BlinkMacSystemFont is the equivalent for Chrome on Mac OS X.
+
+    Segoe UI targets Windows and Windows Phone.
+
+    Roboto targets Android and newer Chrome OS. 
+    It is deliberately listed after Segoe UI so that if you’re an 
+    Android developer on Windows and have Roboto installed, 
+    Segoe UI will be used instead.
+*/
+
+ /* stylelint-disable */
+$font-family-sans-serif: 
+    roboto, 
+    -apple-system, 
+    BlinkMacSystemFont,
+    "Helvetica Neue", 
+    "Segoe UI", 
+    arial, 
+    sans-serif
+    !default;
+/* stylelint-enable */
+
+$table-border-width:          1px;
+$table-border-color:          $gray-300;
+
+$table-head-bg:               $gray-700;
+$table-head-color:            $gray-200;

@@ -1,0 +1,88 @@
+@import '/variables--app';
+
+/*
+       Kendo variables for customizing our app. 
+       Based on Kendo's Default theme. 
+      
+        Whatever is declared here, we've copied from Kendo UI's
+       variable file:
+       \node_modules\@progress\kendo-theme-default\scss_variables.scss
+
+        When Kendo imports the component styles, it'll use these
+        variables instead of its defaults. 
+
+        https://github.com/telerik/kendo-theme-default#customization
+
+        Although this affects all Kendo UI components
+        it's not comprehensive. Kendo UI only surfaces 
+        some parts of its stying. We'll need to do the rest ourselves with overrides.
+
+        Don't place overrides in this file. There's a separate 
+        partial for that, and it needs to be imported
+        *after Kendo UI default component styles
+*/
+
+$accent: $blue;
+$info: $gray-200;
+$text-color: $black;
+$base-text: $black;
+$hovered-text: $black;
+$selected-text: $black;
+
+$base-bg: white;
+
+// gets passed to a Kendo gradient mixin that 
+$base-gradient: $base-bg $base-bg;
+
+$hovered-text: $black;
+$hovered-bg: $gray-200;
+
+$input-padding-x: 0.25rem;
+$input-padding-y: 1rem;
+
+$input-bg: $gray-300;
+$input-hovered-bg: white;
+$input-focused-bg: white;
+$input-border-width: 1px;
+
+$enable-rounded: false;
+
+$font-size: $html-font-size;
+$font-family: 'Roboto', sans-serif;
+
+$border-radius: 1px;
+
+$base-border: $gray-400;
+$hovered-border: $gray-400;
+$focused-border: $gray-400;
+$border-color: $gray-400;
+
+$transition: all 0.1s ease-in;
+
+$input-default-width: 100%;
+
+$enable-shadows: false; // doesn't seem to work, so set each individually 
+$focused-shadow: none;
+$popup-shadow: none;
+$popup-bg: white;
+
+$button-border-width: 0;
+$button-hovered-text: white;
+$button-hovered-bg: $blue;
+$button-text: white;
+$button-pressed-text: white;
+$button-pressed-bg: $blue;
+
+$button-shadow: none;
+$button-hovered-shadow: none;
+$button-pressed-shadow: none;
+$button-focused-shadow: none;
+$primary-button-pressed-shadow: none;
+$primary-button-focused-shadow: none;
+$input-shadow: none;
+$input-hovered-shadow: none;
+$input-focused-shadow: none;
+$list-item-focused-shadow: none;
+$card-box-shadow: none;
+
+$disabled-opacity: 1;
